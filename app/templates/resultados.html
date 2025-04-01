@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultados de búsqueda</title>
+</head>
+<body>
+    <h1>Resultados para "{{ busqueda }}"</h1>
+    {% if resultados %}
+        <ul>
+        {% for item in resultados %}
+            <li>
+                <h2>{{ item.titulo }}</h2>
+                <p>Precio: {{ item.precio }} {{ item.moneda }}</p>
+                <p>Condición: {{ item.condicion }}</p>
+                {% if item.imagen %}
+                    <img src="{{ item.imagen }}" alt="Imagen de {{ item.titulo }}" width="150">
+                {% endif %}
+                <p><a href="{{ item.link }}" target="_blank">Ver en eBay</a></p>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No se encontraron resultados.</p>
+    {% endif %}
+    <a href="/">Nueva búsqueda</a>
+</body>
+</html>
